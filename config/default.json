@@ -1,7 +1,7 @@
 {
   "host": "localhost",
   "port": 3030,
-  "mongodb": "mongodb://localhost:27017/blackJackApi",
+  "mongodb": "mongodb://mongo:27017/blackJackApi",
   "public": "../public/",
   "auth": {
     "token": {
