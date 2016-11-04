@@ -6,6 +6,9 @@ services:
             - 3030:3030
         depends_on:
             - mongo
+        environment:
+            - NODE_ENV=production
+            - DATABASE_URL=mongodb://mongo:27017/black-jack-api
     mongo:
         image: mongo:3.2.10 
 

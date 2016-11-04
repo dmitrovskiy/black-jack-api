@@ -25,6 +25,7 @@
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
     "start": "node src/",
+    "start:dev": "nodemon src/",
     "mocha": "mocha test/ --recursive"
   },
   "dependencies": {
@@ -41,7 +42,8 @@
     "passport": "^0.3.2",
     "serve-favicon": "^2.3.0",
     "winston": "^2.3.0",
-    "lodash": "^4.16.6"
+    "lodash": "^4.16.6",
+    "mongoose-hidden": "0.6.4"
   },
   "devDependencies": {
     "jshint": "^2.9.4",

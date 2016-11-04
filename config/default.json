@@ -1,12 +1,5 @@
 {
   "host": "localhost",
   "port": 3030,
-  "mongodb": "mongodb://mongo:27017/blackJackApi",
-  "public": "../public/",
-  "auth": {
-    "token": {
-      "secret": "a/zkWSpM07WIYJ4Sk3DTBbrWT6m+7eTEoFRwKqjt6HtxI8QG8lhJKXL/Mj05aoX0+FICwGpydAWcE5d92Cp8Dg=="
-    },
-    "local": {}
-  }
+  "mongodb": "mongodb://localhost:27017/blackJackApi"
 }

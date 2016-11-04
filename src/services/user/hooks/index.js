@@ -14,7 +14,12 @@ exports.after = {
   all: [],
   find: [],
   get: [],
-  create: [],
+  create: [
+    function (hook) {
+      console.log(hook.result.toJSON());
+      Promise.resolve(hook);
+    }
+  ],
   update: [],
   patch: [],
   remove: []
