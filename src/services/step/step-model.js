@@ -14,7 +14,15 @@ const stepSchema = new Schema(
       enum: ['hit', 'stand']
     }
   },
-  {}
+  {
+    toJSON: {
+      virtuals: true,
+      transform: function (doc, ret) {
+        delete ret._id;
+        return ret;
+      }
+    }
+  }
 );
 
 module.exports = mongoose.model('step', stepSchema);
