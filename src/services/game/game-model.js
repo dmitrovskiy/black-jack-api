@@ -12,6 +12,15 @@ const gameSchema = new Schema(
     bet: {
       type: Number,
       required: true
+    },
+    state: {
+      type: String,
+      enum: ['pending', 'end'],
+      default: 'pending'
+    },
+    outcome: {
+      type: String,
+      enum: ['client', 'croupier']
     }
   },
   {
