@@ -1,7 +1,8 @@
 'use strict';
 
 const user = require('./user');
-const payments = require('./payments');
+const payment = require('./payment');
+const game = require('./game');
 const mongoose = require('mongoose');
 
 module.exports = function() {
@@ -11,5 +12,6 @@ module.exports = function() {
   mongoose.Promise = global.Promise;
 
   app.configure(user);
-  app.configure(payments);
+  app.configure(payment);
+  app.configure(game);
 };

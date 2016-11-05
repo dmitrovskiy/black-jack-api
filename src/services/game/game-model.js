@@ -3,18 +3,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema(
+const gameSchema = new Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      index: {
-        unique: true
-      }
+    userId: {
+      type: Schema.Types.ObjectId,
+      required: true
     },
-    cash: {
+    bet: {
       type: Number,
-      default: 0
+      required: true
     }
   },
   {
@@ -24,8 +21,9 @@ const userSchema = new Schema(
         delete ret._id;
         return ret;
       }
-    }
+    },
+    timestamps: true
   }
 );
 
-module.exports = mongoose.model('user', userSchema);
+module.exports = mongoose.model('game', gameSchema);
