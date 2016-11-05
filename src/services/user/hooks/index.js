@@ -1,26 +1,11 @@
 'use strict';
 
+const sanitize = require('./sanitize');
+
 exports.before = {
-  all: [],
-  find: [],
-  get: [],
-  create: [],
-  update: [],
-  patch: [],
-  remove: []
+  create: [sanitize],
+  update: [sanitize],
+  patch: [sanitize]
 };
 
-exports.after = {
-  all: [],
-  find: [],
-  get: [],
-  create: [
-    function (hook) {
-      console.log(hook.result.toJSON());
-      Promise.resolve(hook);
-    }
-  ],
-  update: [],
-  patch: [],
-  remove: []
-};
+exports.after = {};

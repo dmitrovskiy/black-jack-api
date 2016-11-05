@@ -1,7 +1,9 @@
 'use strict';
 
 const user = require('./user');
+const payments = require('./payments');
 const mongoose = require('mongoose');
+
 module.exports = function() {
   const app = this;
 
@@ -9,4 +11,5 @@ module.exports = function() {
   mongoose.Promise = global.Promise;
 
   app.configure(user);
+  app.configure(payments);
 };

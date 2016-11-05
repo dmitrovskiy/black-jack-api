@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const mongooseHidden = require('mongoose-hidden')();
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -11,21 +10,21 @@ const userSchema = new Schema({
     index: {
       unique: true
     }
+  },
+  cash: {
+    type: Number,
+    default: 0
   }
-});
-
-userSchema.virtual('id').get(function(){
-  return this._id.toHexString();
-});
-
-userSchema.set('toJSON', {
-  virtuals: true,
-  transform: function (doc, ret, options) {
-    delete ret._id;
-    return ret;
+},
+  {
+    toJSON: {
+      virtuals: true,
+      transform: function (doc, ret) {
+        delete ret._id;
+        return ret;
+      }
+    }
   }
-});
+);
 
-const userModel = mongoose.model('user', userSchema);
-
-module.exports = userModel;
+module.exports = mongoose.model('user', userSchema);
