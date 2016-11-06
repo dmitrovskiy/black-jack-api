@@ -9,7 +9,7 @@ describe('services.user.hooks.sanitize', function (){
       data: {
         cash: 10
       }
-    }
+    };
   });
 
   it('should sanitize cash field', function () {

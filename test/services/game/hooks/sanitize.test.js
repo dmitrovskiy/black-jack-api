@@ -10,7 +10,7 @@ describe('services.game.hooks.sanitize', function (){
         state: 'test',
         outcome: 'test'
       }
-    }
+    };
   });
 
   it('should sanitize state field', function () {
@@ -24,6 +24,6 @@ describe('services.game.hooks.sanitize', function (){
     return gameSanitize(this.hook)
       .then(function(hook) {
         assert.isUndefined(hook.data.outcome);
-      })
-  })
+      });
+  });
 });

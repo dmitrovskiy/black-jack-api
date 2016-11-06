@@ -19,7 +19,7 @@ describe('services.payment.hooks.update-user-amount', function () {
         userId: 123,
         amount: 10
       }
-    }
+    };
   });
 
 
