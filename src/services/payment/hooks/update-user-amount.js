@@ -1,10 +1,9 @@
 'use strict';
 
 const userModel = require('../../user/user-model');
-const ObjectId = require('mongoose').Schema.Types.ObjectId;
 
 module.exports = function(hook) {
-  userModel.update(
+  return userModel.update(
     {
       _id: hook.data.userId
     },
