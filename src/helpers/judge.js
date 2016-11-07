@@ -13,7 +13,7 @@ module.exports = {
 };
 
 function estimateGame(game) {
-
+  
 }
 
 function rateCards(cards) {
