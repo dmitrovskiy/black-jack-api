@@ -1,12 +1,15 @@
 'use strict';
 
 const _ = require('lodash');
-const defaultCards = require('../../default-data/cards');
 
-module.exports = {
-  getCard: getCard
+module.exports = function (cards) {
+  let shoe = {
+    cards: cards
+  };
+
+  shoe.getNextCard = function () {
+    return _.pullAt(this.cards, _.random(this.cards.length-1))[0];
+  };
+
+  return shoe;
 };
-
-function getCard(cards) {
-  return _.pullAt(cards, _.random(cards.length-1))[0];
-}

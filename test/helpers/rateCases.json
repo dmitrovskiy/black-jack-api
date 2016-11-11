@@ -1,0 +1,42 @@
+[
+  {
+    "clientHand": 21,
+    "dealerHand": 21,
+    "outcome": "push"
+  },
+  {
+    "clientHand": 21,
+    "dealerHand": 17,
+    "outcome": "clientBJ"
+  },
+  {
+    "clientHand": 22,
+    "dealerHand": 21,
+    "outcome": "clientFail"
+  },
+  {
+    "clientHand": 17,
+    "dealerHand": 21,
+    "outcome": "clientFail"
+  },
+  {
+    "clientHand": 17,
+    "dealerHand": 22,
+    "outcome": "clientWin"
+  },
+  {
+    "clientHand": 18,
+    "dealerHand": 17,
+    "outcome": "clientWin"
+  },
+  {
+    "clientHand": 17,
+    "dealerHand": 19,
+    "outcome": "clientFail"
+  },
+  {
+    "clientHand": 17,
+    "dealerHand": 17,
+    "outcome": "push"
+  }
+]

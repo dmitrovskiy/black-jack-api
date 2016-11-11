@@ -1,37 +1,64 @@
 'use strict';
 
-const _ = require('lodash');
+const hand = require('./hand');
+const shoe = require('./shoe');
+const dealer = require('./dealer');
 
-const
-  ace = 0,
-  ten = 9,
-  king = 13;
+module.exports = function (game) {
+  let judge = {
+    game: game,
+    dealer: dealer(shoe, hand(game.dealerCards)),
+    clientHand: hand(game.clientCards),
+    hit: false
+  };
 
-module.exports = {
-  estimateGame: estimateGame,
-  rateCards: rateCards
-};
-
-function estimateGame(game) {
-  
-}
-
-function rateCards(cards) {
-  let sumWithoutAces = _.sumBy(cards, function (item) {
-    let value = 0;
-    if (_.inRange(item.sign, ten, king + 1)) {
-      value = 10;
-    } else {
-      value = item.sign;
+  judge.makeStep = function (step) {
+    switch(step.type) {
+      case 'stand':
+        this.dealer.makeStep();
+        break;
+      case 'hit':
+        this.clientHand.takeCard(shoe);
+        this.hit = true;
+        break;
     }
-    return value;
-  });
+  };
 
-  let acesCount = _.size(_.filter(cards, function (item) {
-    return item.sign === ace;
-  }));
+  judge.getOutcome = function () {
+    if(this.hit) {
+      return 'hit';
+    }
 
-  let sumAces = sumWithoutAces > 10 ? acesCount : acesCount * 11 ;
+    let dealerPoints = this.dealer.hand.rateCards();
+    let clientPoints = this.clientHand.rateCards();
+    let outcome;
 
-  return sumWithoutAces + sumAces;
-}
+    if(clientPoints == 21) {
+      if(dealerPoints == 21) {
+        outcome = 'push';
+      } else {
+        outcome = 'clientBJ';
+      }
+    } else if(clientPoints > 21) {
+      outcome = 'clientFail';
+    } else {
+      if(dealerPoints == 21) {
+        outcome = 'clientFail';
+      } else if(dealerPoints > 21) {
+        outcome = 'clientWin';
+      } else {
+        if(clientPoints > dealerPoints) {
+          outcome = 'clientWin';
+        } else if(clientPoints < dealerPoints) {
+          outcome = 'clientFail';
+        } else {
+          outcome = 'push';
+        }
+      }
+    }
+
+    return outcome;
+  };
+
+  return judge;
+};

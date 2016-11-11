@@ -4,7 +4,7 @@ const assert = require('chai').assert;
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 
-var userModelStub = {};
+let userModelStub = {};
 const updateUserAmount = proxyquire(
   '../../../../src/services/payment/hooks/update-user-amount',
   {
