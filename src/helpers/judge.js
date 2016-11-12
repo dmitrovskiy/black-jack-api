@@ -5,12 +5,13 @@ const shoe = require('./shoe');
 const dealer = require('./dealer');
 
 module.exports = function (game) {
-  let judge = {
-    game: game,
-    dealer: dealer(shoe, hand(game.dealerCards)),
-    clientHand: hand(game.clientCards),
-    hit: false
-  };
+  let judge = {};
+
+  judge.game = game;
+  judge.shoe = shoe(game.cards);
+  judge.dealer = dealer(judge.shoe, hand(game.dealerCards));
+  judge.clientHand = hand(game.clientCards);
+  judge.hit = false;
 
   judge.makeStep = function (step) {
     switch(step.type) {

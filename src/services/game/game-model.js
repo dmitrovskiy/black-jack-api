@@ -18,9 +18,18 @@ const gameSchema = new Schema(
       enum: ['pending', 'end'],
       default: 'pending'
     },
+    clientCards: {
+      type: Array
+    },
+    dealerCards: {
+      type: Array
+    },
+    cards: {
+      type: Array
+    },
     outcome: {
       type: String,
-      enum: ['client', 'croupier']
+      enum: ['push', 'clientBJ', 'clientFail', 'clientWin']
     }
   },
   {
