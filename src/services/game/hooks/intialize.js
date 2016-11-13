@@ -1,11 +1,29 @@
 'use strict';
 
+const judgeHelper = require('../../../helpers/judge');
+const shoeHelper = require('../../../helpers/shoe');
 const defaultCards = require('../../../../default-data/cards');
 
-module.exports = function () {
-  return function (hook) {
+module.exports = function (hook) {
+  let cards = defaultCards.slice();
+  const shoe = shoeHelper(cards);
 
-    hook.data.cards = defaultCards;
-    return Promise.resolve(hook);
-  };
+  hook.data.dealerCards = [
+    shoe.getNextCard(),
+    shoe.getNextCard()
+  ];
+  hook.data.clientCards = [
+    shoe.getNextCard(),
+    shoe.getNextCard()
+  ];
+  hook.data.cards = cards;
+
+  const judge = judgeHelper(hook.data);
+  const outcome = judge.getOutcome('initial');
+
+  if(outcome !== null) {
+    hook.data.outcome = outcome;
+  }
+
+  return Promise.resolve(hook);
 };

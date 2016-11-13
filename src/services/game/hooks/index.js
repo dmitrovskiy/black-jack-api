@@ -1,9 +1,13 @@
 'use strict';
 
 const sanitize = require('./sanitize');
+const initialize = require('./intialize');
 
 module.exports.before = {
-  create: [sanitize],
+  create: [
+    sanitize,
+    initialize
+  ],
   update: [sanitize],
   patch: [sanitize]
 };

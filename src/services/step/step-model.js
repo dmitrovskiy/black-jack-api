@@ -9,7 +9,7 @@ const stepSchema = new Schema(
       type: Schema.Types.ObjectId,
       required: true
     },
-    stepType: {
+    type: {
       type: String,
       enum: ['hit', 'stand']
     }

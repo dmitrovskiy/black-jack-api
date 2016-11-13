@@ -37,6 +37,7 @@ const gameSchema = new Schema(
       virtuals: true,
       transform: function (doc, ret) {
         delete ret._id;
+        delete ret.cards;
         return ret;
       }
     },
