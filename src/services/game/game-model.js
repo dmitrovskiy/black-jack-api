@@ -13,11 +13,6 @@ const gameSchema = new Schema(
       type: Number,
       required: true
     },
-    state: {
-      type: String,
-      enum: ['pending', 'end'],
-      default: 'pending'
-    },
     clientCards: {
       type: Array
     },

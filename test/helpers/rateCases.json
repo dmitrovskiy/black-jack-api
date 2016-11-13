@@ -2,41 +2,49 @@
   {
     "clientHand": 21,
     "dealerHand": 21,
-    "outcome": "push"
+    "outcome": "push",
+    "step": "initial"
   },
   {
     "clientHand": 21,
     "dealerHand": 17,
-    "outcome": "clientBJ"
+    "outcome": "clientBJ",
+    "step": "initial"
   },
   {
     "clientHand": 22,
     "dealerHand": 21,
-    "outcome": "clientFail"
+    "outcome": "clientFail",
+    "step": "hit"
   },
   {
     "clientHand": 17,
     "dealerHand": 21,
-    "outcome": "clientFail"
+    "outcome": "clientFail",
+    "step": "stand"
   },
   {
     "clientHand": 17,
     "dealerHand": 22,
-    "outcome": "clientWin"
+    "outcome": "clientWin",
+    "step": "stand"
   },
   {
     "clientHand": 18,
     "dealerHand": 17,
-    "outcome": "clientWin"
+    "outcome": "clientWin",
+    "step": "stand"
   },
   {
     "clientHand": 17,
     "dealerHand": 19,
-    "outcome": "clientFail"
+    "outcome": "clientFail",
+    "step": "stand"
   },
   {
     "clientHand": 17,
     "dealerHand": 17,
-    "outcome": "push"
+    "outcome": "push",
+    "step": "stand"
   }
 ]

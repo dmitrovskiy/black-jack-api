@@ -29,23 +29,22 @@ describe('helpers.judge', function () {
     it('should call dealer.makeStep on stand', function () {
       let tempJudge = judge({});
       tempJudge.dealer = {makeStep: sinon.spy()};
-      tempJudge.makeStep({type: 'stand'});
+      tempJudge.makeStep('stand');
 
       assert.isTrue(tempJudge.dealer.makeStep.calledOnce);
     });
     it('should take card on hit', function () {
       let tempJudge = judge({});
       tempJudge.clientHand = {takeCard: sinon.spy()};
-      tempJudge.makeStep({type: 'hit'});
+      tempJudge.makeStep('hit');
 
       assert.isTrue(tempJudge.clientHand.takeCard.calledOnce);
-      assert.isTrue(tempJudge.hit);
     });
   });
 
   describe('#getOutcome', function () {
     rateCases.forEach(function (rateCase) {
-      it(`should return "${rateCase.outcome}" on client:${rateCase.clientHand}, dealer:${rateCase.dealerHand}`, function () {
+      it(`should be "${rateCase.outcome}" on client:${rateCase.clientHand}, dealer:${rateCase.dealerHand}`, function () {
         let tempJudge = judge({});
         tempJudge.dealer = {
           hand: {
@@ -55,7 +54,7 @@ describe('helpers.judge', function () {
         tempJudge.clientHand = {
           rateCards: sinon.stub().returns(rateCase.clientHand)
         };
-        assert.equal(rateCase.outcome, tempJudge.getOutcome());
+        assert.equal(rateCase.outcome, tempJudge.getOutcome(rateCase.step));
       });
     });
   });

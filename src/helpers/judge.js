@@ -46,7 +46,7 @@ module.exports = function (game) {
       case 'stand':
         if(clientPoints == dealerPoints) {
           outcome = 'push';
-        } else if(dealerPoints == 21 || dealerPoints > clientPoints) {
+        } else if(dealerPoints == 21 || dealerPoints > clientPoints && dealerPoints < 21) {
           outcome = 'clientFail';
         } else if(clientPoints == 21 || dealerPoints < clientPoints || dealerPoints > 21) {
           outcome = 'clientWin';
