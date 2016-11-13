@@ -12,9 +12,33 @@
     "step": "initial"
   },
   {
+    "clientHand": 17,
+    "dealerHand": 17,
+    "outcome": null,
+    "step": "initial"
+  },
+  {
+    "clientHand": 22,
+    "dealerHand": 17,
+    "outcome": "clientFail",
+    "step": "initial"
+  },
+  {
     "clientHand": 22,
     "dealerHand": 21,
     "outcome": "clientFail",
+    "step": "hit"
+  },
+  {
+    "clientHand": 21,
+    "dealerHand": 21,
+    "outcome": "push",
+    "step": "hit"
+  },
+  {
+    "clientHand": 21,
+    "dealerHand": 17,
+    "outcome": "clientWin",
     "step": "hit"
   },
   {

@@ -13,7 +13,7 @@ module.exports = function (game) {
   judge.clientHand = hand(game.clientCards);
 
   judge.makeStep = function (step) {
-    switch(step) {
+    switch (step) {
       case 'stand':
         this.dealer.makeStep();
         break;
@@ -28,10 +28,12 @@ module.exports = function (game) {
     let clientPoints = this.clientHand.rateCards();
     let outcome = null;
 
-    switch(step) {
+    switch (step) {
       case 'initial':
-        if(clientPoints == 21) {
-          if(dealerPoints == 21) {
+        if (clientPoints > 21) {
+          outcome = 'clientFail';
+        } else if (clientPoints == 21) {
+          if (dealerPoints == 21) {
             outcome = 'push';
           } else {
             outcome = 'clientBJ';
@@ -39,16 +41,22 @@ module.exports = function (game) {
         }
         break;
       case 'hit':
-        if(clientPoints > 21) {
+        if (clientPoints > 21) {
           outcome = 'clientFail';
+        } else if (clientPoints == 21) {
+          if (dealerPoints == 21) {
+            outcome = 'push';
+          } else {
+            outcome = 'clientWin';
+          }
         }
         break;
       case 'stand':
-        if(clientPoints == dealerPoints) {
+        if (clientPoints == dealerPoints) {
           outcome = 'push';
-        } else if(dealerPoints == 21 || dealerPoints > clientPoints && dealerPoints < 21) {
+        } else if (dealerPoints == 21 || dealerPoints > clientPoints && dealerPoints < 21) {
           outcome = 'clientFail';
-        } else if(clientPoints == 21 || dealerPoints < clientPoints || dealerPoints > 21) {
+        } else if (clientPoints == 21 || dealerPoints < clientPoints || dealerPoints > 21) {
           outcome = 'clientWin';
         }
         break;

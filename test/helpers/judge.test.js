@@ -44,7 +44,7 @@ describe('helpers.judge', function () {
 
   describe('#getOutcome', function () {
     rateCases.forEach(function (rateCase) {
-      it(`should be "${rateCase.outcome}" on client:${rateCase.clientHand}, dealer:${rateCase.dealerHand}`, function () {
+      it(`should be "${rateCase.outcome}" on client:${rateCase.clientHand}, dealer:${rateCase.dealerHand}, step: ${rateCase.step}`, function () {
         let tempJudge = judge({});
         tempJudge.dealer = {
           hand: {
