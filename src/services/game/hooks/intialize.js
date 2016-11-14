@@ -3,6 +3,7 @@
 const judgeHelper = require('../../../helpers/judge');
 const shoeHelper = require('../../../helpers/shoe');
 const defaultCards = require('../../../../default-data/cards');
+const Promise = require('bluebird');
 
 module.exports = function (hook) {
   let cards = defaultCards.slice();

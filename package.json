@@ -29,6 +29,7 @@
     "mocha": "mocha test/ --recursive"
   },
   "dependencies": {
+    "bluebird": "^3.4.6",
     "body-parser": "1.15.2",
     "compression": "1.6.2",
     "cors": "2.8.1",
@@ -38,15 +39,15 @@
     "feathers-hooks": "1.6.1",
     "feathers-mongoose": "3.5.3",
     "feathers-rest": "1.5.1",
-    "mongoose": "4.6.5",
-    "serve-favicon": "2.3.0",
-    "winston": "2.3.0",
     "lodash": "4.16.6",
-    "mongoose-hidden": "0.6.4"
+    "mongoose": "4.6.5",
+    "mongoose-hidden": "0.6.4",
+    "serve-favicon": "2.3.0",
+    "winston": "2.3.0"
   },
   "devDependencies": {
+    "ava": "^0.15.0",
     "jshint": "2.9.4",
-    "mocha": "3.1.2",
     "proxyquire": "1.7.10",
     "chai": "3.5.0",
     "sinon": "1.17.6"

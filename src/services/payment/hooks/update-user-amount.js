@@ -1,9 +1,10 @@
 'use strict';
 
 const userModel = require('../../user/user-model');
+const Promise = require('bluebird');
 
 module.exports = function(hook) {
-  return userModel.update(
+  userModel.update(
     {
       _id: hook.data.userId
     },
@@ -13,4 +14,6 @@ module.exports = function(hook) {
       }
     }
   ).exec();
+
+  return Promise.resolve(hook);
 };

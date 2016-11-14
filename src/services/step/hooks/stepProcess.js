@@ -2,6 +2,7 @@
 
 const judgeHook = require('../../../helpers/judge');
 const gameModel = require('../../game/game-model');
+const Promise = require('bluebird');
 
 module.exports = function (hook) {
 

@@ -1,5 +1,7 @@
 'use strict';
 
+const Promise = require('bluebird');
+
 module.exports = function(hook) {
   delete hook.data.state;
   delete hook.data.outcome;
