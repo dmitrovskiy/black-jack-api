@@ -32,3 +32,6 @@ data/
 
 # IDEA files
 .idea
+
+# Babel
+dist
