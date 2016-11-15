@@ -1,19 +1,17 @@
 'use strict';
 
-const assert = require('chai').assert;
-const _ = require('lodash');
-const hand = require('../../src/helpers/hand');
-const sinon = require('sinon');
-const cardCases = require('./cardCases');
+import {assert} from 'chai';
+import _ from 'lodash';
+import Hand from '../../src/helpers/hand';
+import sinon from 'sinon';
+import cardCases from './cardCases';
 
 describe('helpers.hand', function () {
   describe('#rateCards', function () {
     cardCases.forEach(function (item) {
       it(`should return ${item.sum} from ${item.cards}`, function () {
-        let cards = _.map(item.cards, function (sign) {
-          return {sign: sign, type: 0};
-        });
-        assert.equal(item.sum, hand(cards).rateCards());
+        let cards = _.map(item.cards, (sign) => ({sign: sign, type: 0}));
+        assert.equal(item.sum, new Hand(cards).rateCards());
       });
     });
   });
@@ -23,9 +21,9 @@ describe('helpers.hand', function () {
       let shoeStub = {
         getNextCard: sinon.stub().returns({})
       };
-      let tempHand = hand([]);
-      tempHand.takeCard(shoeStub);
-      assert.equal(1, tempHand.cards.length);
+      let hand = new Hand([]);
+      hand.takeCard(shoeStub);
+      assert.equal(1, hand.cards.length);
     });
   });
 });

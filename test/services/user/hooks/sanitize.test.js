@@ -1,7 +1,7 @@
 'use strict';
 
-const assert = require('chai').assert;
-const userSanitize = require('../../../../src/services/user/hooks/sanitize');
+import {assert} from 'chai';
+import userSanitize from '../../../../src/services/user/hooks/sanitize';
 
 describe('services.user.hooks.sanitize', function (){
   beforeEach('create hook stub', function () {

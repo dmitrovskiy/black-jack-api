@@ -1,12 +1,12 @@
 'use strict';
 
-const assert = require('chai').assert;
-const shoe = require('../../src/helpers/shoe');
+import {assert} from 'chai';
+import Shoe from '../../src/helpers/shoe';
 
 describe('helpers.shoe', function () {
   describe('#getNextCard', function () {
     beforeEach('setup shoe cards', function () {
-      this.shoe = shoe([{sign: 0, type: 0}]);
+      this.shoe = new Shoe([{sign: 0, type: 0}]);
     });
     it('should get random card from cards', function () {
       let card = this.shoe.getNextCard();

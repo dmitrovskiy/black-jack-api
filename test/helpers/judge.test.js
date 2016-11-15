@@ -1,9 +1,9 @@
 'use strict';
 
-const assert = require('chai').assert;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
-const rateCases = require('./rateCases');
+import {assert} from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
+import rateCases from './rateCases';
 
 let dealerStub = function () {
   return {};
@@ -15,7 +15,7 @@ let shoeStub = function () {
   return {};
 };
 
-const judge = proxyquire(
+const Judge = proxyquire(
   '../../src/helpers/judge',
   {
     '../dealer': dealerStub,
@@ -27,34 +27,34 @@ const judge = proxyquire(
 describe('helpers.judge', function () {
   describe('#makeStep', function () {
     it('should call dealer.makeStep on stand', function () {
-      let tempJudge = judge({});
-      tempJudge.dealer = {makeStep: sinon.spy()};
-      tempJudge.makeStep('stand');
+      let judge = new Judge({});
+      judge.dealer = {makeStep: sinon.spy()};
+      judge.makeStep('stand');
 
-      assert.isTrue(tempJudge.dealer.makeStep.calledOnce);
+      assert.isTrue(judge.dealer.makeStep.calledOnce);
     });
     it('should take card on hit', function () {
-      let tempJudge = judge({});
-      tempJudge.clientHand = {takeCard: sinon.spy()};
-      tempJudge.makeStep('hit');
+      let judge = new Judge({});
+      judge.clientHand = {takeCard: sinon.spy()};
+      judge.makeStep('hit');
 
-      assert.isTrue(tempJudge.clientHand.takeCard.calledOnce);
+      assert.isTrue(judge.clientHand.takeCard.calledOnce);
     });
   });
 
   describe('#getOutcome', function () {
     rateCases.forEach(function (rateCase) {
       it(`should be "${rateCase.outcome}" on client:${rateCase.clientHand}, dealer:${rateCase.dealerHand}, step: ${rateCase.step}`, function () {
-        let tempJudge = judge({});
-        tempJudge.dealer = {
+        let judge = new Judge({});
+        judge.dealer = {
           hand: {
             rateCards: sinon.stub().returns(rateCase.dealerHand)
           }
         };
-        tempJudge.clientHand = {
+        judge.clientHand = {
           rateCards: sinon.stub().returns(rateCase.clientHand)
         };
-        assert.equal(rateCase.outcome, tempJudge.getOutcome(rateCase.step));
+        assert.equal(rateCase.outcome, judge.getOutcome(rateCase.step));
       });
     });
   });

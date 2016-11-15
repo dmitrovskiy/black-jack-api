@@ -3,7 +3,7 @@
 import _ from 'lodash';
 
 class Hand {
-  constructor({cards = []}) {
+  constructor(cards = []) {
     this.cards = cards;
   }
 
@@ -22,7 +22,7 @@ class Hand {
       return value;
     });
 
-    let acesCount = _.size(_.filter(this.cards, (i) => item.sign === 0));
+    let acesCount = _.size(_.filter(this.cards, (i) => i.sign === 0));
     let sumAces = sumWithoutAces > 10 ? acesCount : acesCount * 11;
 
     return sumWithoutAces + sumAces;

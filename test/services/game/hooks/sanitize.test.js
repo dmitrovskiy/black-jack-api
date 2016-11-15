@@ -1,7 +1,7 @@
 'use strict';
 
-const assert = require('chai').assert;
-const gameSanitize = require('../../../../src/services/game/hooks/sanitize');
+import {assert} from 'chai';
+import gameSanitize from '../../../../src/services/game/hooks/sanitize';
 
 describe('services.game.hooks.sanitize', function (){
   beforeEach('create hook stub', function () {

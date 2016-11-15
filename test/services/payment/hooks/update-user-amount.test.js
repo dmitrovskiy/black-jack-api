@@ -1,8 +1,8 @@
 'use strict';
 
-const assert = require('chai').assert;
-const proxyquire = require('proxyquire');
-const sinon = require('sinon');
+import {assert} from 'chai';
+import proxyquire from 'proxyquire';
+import sinon from 'sinon';
 
 let userModelStub = {};
 const updateUserAmount = proxyquire(

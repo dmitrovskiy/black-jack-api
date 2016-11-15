@@ -1,8 +1,8 @@
 'use strict';
 
-const assert = require('chai').assert;
-const sinon = require('sinon');
-const dealer = require('../../src/helpers/dealer');
+import {assert} from 'chai';
+import sinon from 'sinon';
+import Dealer from '../../src/helpers/dealer';
 
 describe('helpers.dealer', function () {
   describe('#makeStep', function () {
@@ -17,9 +17,9 @@ describe('helpers.dealer', function () {
         takeCard: sinon.spy()
       };
 
-      let tempDealer = dealer(shoeStub, handStub);
+      let dealer = new Dealer(shoeStub, handStub);
 
-      tempDealer.makeStep();
+      dealer.makeStep();
 
       assert.isTrue(handStub.takeCard.calledOnce);
     });
