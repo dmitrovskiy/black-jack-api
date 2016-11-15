@@ -9,13 +9,11 @@
   ],
   "license": "MIT",
   "repository": {},
-  "author": [
-    {
-      "name": "Vladimir Dmitrovskiy",
-      "email": "dmitrovskiyvl@gmail.com",
-      "url": "https://github.com/dmitrovskiy"
-    }
-  ],
+  "author": {
+    "name": "Vladimir Dmitrovskiy",
+    "email": "dmitrovskiyvl@gmail.com",
+    "url": "https://github.com/dmitrovskiy"
+  },
   "contributors": [],
   "bugs": {},
   "engines": {
@@ -23,11 +21,11 @@
   },
   "scripts": {
     "test": "npm run jshint && npm run mocha",
-    "jshint": "jshint src/. test/. --config",
+    "jshint": "jshint src test --config",
     "start": "node dist/",
-    "start:dev": "nodemon src/",
-    "mocha": "mocha test/ --recursive",
-    "build": "babel src/ -d dist/"
+    "start:dev": "DEBUG=app* babel-node src/",
+    "mocha": "mocha test --recursive",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "bluebird": "^3.4.6",
@@ -51,9 +49,11 @@
     "babel-cli": "^6.18.0",
     "babel-polyfill": "^6.16.0",
     "babel-preset-es2015": "^6.18.0",
+    "babel-preset-es2016": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
     "chai": "3.5.0",
     "jshint": "2.9.4",
+    "nodemon": "^1.11.0",
     "proxyquire": "1.7.10",
     "sinon": "1.17.6"
   }
