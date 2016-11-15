@@ -1,10 +1,10 @@
 'use strict';
 
-const service = require('feathers-mongoose');
-const user = require('./user-model');
-const hooks = require('./hooks');
+import service from 'feathers-mongoose';
+import user from './user-model';
+import hooks from './hooks';
 
-module.exports = function() {
+export default function() {
   const app = this;
 
   const options = {
@@ -16,5 +16,4 @@ module.exports = function() {
 
   userService.before(hooks.before);
   userService.after(hooks.after);
-
 };

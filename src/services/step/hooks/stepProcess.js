@@ -1,19 +1,18 @@
 'use strict';
 
-const judgeHook = require('../../../helpers/judge');
-const gameModel = require('../../game/game-model');
-const Promise = require('bluebird');
+import judgeHook from '../../../helpers/judge';
+import gameModel from '../../game/game-model';
 
-module.exports = function (hook) {
+export default async function (hook) {
 
   gameModel.findOne(
-    {_id:hook.data.gameId}
+    {_id: hook.data.gameId}
   ).exec().then(function (game) {
     const judge = judgeHook(game);
     judge.makeStep(hook.data.type);
     const outcome = judge.getOutcome(hook.data.type);
 
-    if(outcome !== null) {
+    if (outcome !== null) {
       game.outcome = outcome;
     }
 
@@ -23,5 +22,5 @@ module.exports = function (hook) {
     game.save();
   });
 
-  return Promise.resolve(hook);
+  return hook;
 };

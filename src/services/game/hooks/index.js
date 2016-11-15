@@ -1,14 +1,17 @@
 'use strict';
 
-const sanitize = require('./sanitize');
-const initialize = require('./intialize');
+import sanitize from './sanitize';
+import initialize from './intialize';
 
-module.exports.before = {
-  create: [
-    sanitize,
-    initialize
-  ],
-  update: [sanitize],
-  patch: [sanitize]
+export default {
+  before: {
+    create: [
+      sanitize,
+      initialize
+    ],
+    update: [sanitize],
+    patch: [sanitize]
+  },
+
+  after: {}
 };
-module.exports.after = {};

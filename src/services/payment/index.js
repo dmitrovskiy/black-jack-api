@@ -1,10 +1,10 @@
 'use strict';
 
-const paymentModel = require('./payment-model');
-const service = require('feathers-mongoose');
-const hooks = require('./hooks');
+import paymentModel from './payment-model';
+import service from 'feathers-mongoose';
+import hooks from './hooks';
 
-module.exports = function () {
+export default function () {
   const app = this;
 
   const options = {Model: paymentModel};

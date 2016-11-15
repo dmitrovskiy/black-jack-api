@@ -1,7 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
 const paymentSchema = new Schema(
   {
@@ -17,7 +16,7 @@ const paymentSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      transform: function (doc, ret) {
+      transform: (doc, ret) => {
         delete ret._id;
         return ret;
       }
@@ -26,4 +25,4 @@ const paymentSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('payment', paymentSchema);
+export default mongoose.model('payment', paymentSchema);

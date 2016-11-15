@@ -1,13 +1,12 @@
 'use strict';
 
-const judgeHelper = require('../../../helpers/judge');
-const shoeHelper = require('../../../helpers/shoe');
-const defaultCards = require('../../../../default-data/cards');
-const Promise = require('bluebird');
+import Judge from '../../../helpers/judge';
+import Shoe from '../../../helpers/shoe';
+import defaultCards from '../../../../default-data/cards';
 
-module.exports = function (hook) {
-  let cards = defaultCards.slice();
-  const shoe = shoeHelper(cards);
+export default async function (hook) {
+  const cards = defaultCards.slide();
+  const shoe = new Shoe(cards);
 
   hook.data.dealerCards = [
     shoe.getNextCard(),
@@ -19,12 +18,13 @@ module.exports = function (hook) {
   ];
   hook.data.cards = cards;
 
-  const judge = judgeHelper(hook.data);
+  const judge = new Judge(hook.data);
   const outcome = judge.getOutcome('initial');
 
   if(outcome !== null) {
     hook.data.outcome = outcome;
   }
 
-  return Promise.resolve(hook);
+  return hook;
 };
+

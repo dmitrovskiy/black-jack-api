@@ -1,13 +1,13 @@
 'use strict';
 
-const user = require('./user');
-const payment = require('./payment');
-const game = require('./game');
-const step = require('./step');
-const mongoose = require('mongoose');
-const Promise = require('bluebird');
+import user from './user';
+import payment from './payment';
+import game from './game';
+import step from './step';
+import mongoose from 'mongoose';
+import Promise from 'bluebird';
 
-module.exports = function() {
+export default function() {
   const app = this;
 
   mongoose.connect(app.get('mongodb'));

@@ -1,10 +1,10 @@
 'use strict';
 
-const gameModel = require('./game-model');
-const service = require('feathers-mongoose');
-const hooks = require('./hooks');
+import gameModel from './game-model';
+import service from 'feathers-mongoose';
+import hooks from './hooks';
 
-module.exports = function () {
+export default function () {
   const app = this;
 
   const options = {Model: gameModel};

@@ -1,8 +1,8 @@
 'use strict';
 
-const errors = require('feathers-errors');
+import errors from 'feathers-errors';
 
-module.exports = function() {
+export default function() {
   return function(req, res, next) {
     next(new errors.NotFound('Page not found'));
   };

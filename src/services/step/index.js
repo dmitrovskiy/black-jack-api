@@ -1,10 +1,10 @@
 'use strict';
 
-const stepModel = require('./step-model');
-const service = require('feathers-mongoose');
-const hooks = require('./hooks');
+import stepModel from './step-model';
+import service from 'feathers-mongoose';
+import hooks from './hooks';
 
-module.exports = function () {
+export default function () {
   const app = this;
 
   const options = {Model: stepModel};

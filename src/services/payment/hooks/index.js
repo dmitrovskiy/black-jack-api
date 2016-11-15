@@ -1,10 +1,10 @@
 'use strict';
 
-const updateUserAmount = require('./update-user-amount');
+import updateUserAmount from './update-user-amount';
 
-exports.before = {};
-exports.after = {
-  create: [
-    updateUserAmount
-  ]
+export default {
+  before: {},
+  after: {
+    create: [updateUserAmount]
+  }
 };

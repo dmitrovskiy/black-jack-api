@@ -1,9 +1,8 @@
 'use strict';
 
-const userModel = require('../../user/user-model');
-const Promise = require('bluebird');
+import userModel from '../../user/user-model';
 
-module.exports = function(hook) {
+export default async function(hook) {
   userModel.update(
     {
       _id: hook.data.userId
@@ -15,5 +14,5 @@ module.exports = function(hook) {
     }
   ).exec();
 
-  return Promise.resolve(hook);
+  return hook;
 };

@@ -1,10 +1,13 @@
 'use strict';
 
-const stepProcess = require('./stepProcess');
+import stepProcess from './stepProcess';
 
-module.exports.before = {};
-module.exports.after = {
-  create: [
-    stepProcess
-  ]
+export default {
+  before: {},
+  after: {
+    create: [
+      stepProcess
+    ]
+  }
 };
+

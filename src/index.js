@@ -1,8 +1,8 @@
 'use strict';
 
-require('babel-polyfill');
-const pkginfo = require('../package');
-const app = require('./app');
+import pkginfo from '../package';
+import app from './app';
+
 const port = app.get('port');
 const server = app.listen(port);
 

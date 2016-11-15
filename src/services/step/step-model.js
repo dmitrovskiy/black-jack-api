@@ -1,7 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
 const stepSchema = new Schema(
   {
@@ -17,7 +16,7 @@ const stepSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      transform: function (doc, ret) {
+      transform: (doc, ret) => {
         delete ret._id;
         return ret;
       }
@@ -25,4 +24,4 @@ const stepSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('step', stepSchema);
+export default mongoose.model('step', stepSchema);

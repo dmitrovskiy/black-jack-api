@@ -1,8 +1,6 @@
 'use strict';
 
-const Promise = require('bluebird');
-
-module.exports = function (hook) {
+export default async function (hook) {
   delete hook.data.cash;
-  return Promise.resolve(hook);
+  return hook;
 };

@@ -1,41 +1,32 @@
 'use strict';
 
-const _ = require('lodash');
+import _ from 'lodash';
 
-module.exports = function (cards) {
-  let hand = {
-    cards: cards || []
-  };
+class Hand {
+  constructor({cards = []}) {
+    this.cards = cards;
+  }
 
-  hand.takeCard = function (shoe) {
+  takeCard(shoe) {
     this.cards.push(shoe.getNextCard());
-  };
+  }
 
-  hand.rateCards = function () {
-    let sumWithoutAces = _.sumBy(this.cards, function (item) {
+  rateCards() {
+    let sumWithoutAces = _.sumBy(this.cards, (i) => {
       let value = 0;
-      if (_.inRange(item.sign, 9, 14)) {
+      if (_.inRange(i.sign, 9, 14)) {
         value = 10;
       } else {
-        value = item.sign;
+        value = i.sign;
       }
       return value;
     });
 
-    let acesCount = _.size(_.filter(this.cards, function (item) {
-      return item.sign === 0;
-    }));
-
-    let sumAces = sumWithoutAces > 10 ? acesCount : acesCount * 11 ;
+    let acesCount = _.size(_.filter(this.cards, (i) => item.sign === 0));
+    let sumAces = sumWithoutAces > 10 ? acesCount : acesCount * 11;
 
     return sumWithoutAces + sumAces;
-  };
+  }
+}
 
-  return hand;
-};
-
-
-
-
-
-
+export default Hand;

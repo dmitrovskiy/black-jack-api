@@ -1,15 +1,15 @@
 'use strict';
 
-const _ = require('lodash');
+import _ from 'lodash';
 
-module.exports = function (cards) {
-  let shoe = {
-    cards: cards
-  };
+class Shoe {
+  constructor(cards) {
+    this.cards = cards;
+  }
 
-  shoe.getNextCard = function () {
+  getNextCard() {
     return _.pullAt(this.cards, _.random(this.cards.length-1))[0];
-  };
+  }
+}
 
-  return shoe;
-};
+export default Shoe;

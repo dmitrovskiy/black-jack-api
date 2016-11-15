@@ -1,7 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose, { Schema } from 'mongoose';
 
 const gameSchema = new Schema(
   {
@@ -30,7 +29,7 @@ const gameSchema = new Schema(
   {
     toJSON: {
       virtuals: true,
-      transform: function (doc, ret) {
+      transform: (doc, ret) => {
         delete ret._id;
         delete ret.cards;
         return ret;
@@ -40,4 +39,4 @@ const gameSchema = new Schema(
   }
 );
 
-module.exports = mongoose.model('game', gameSchema);
+export default mongoose.model('game', gameSchema);

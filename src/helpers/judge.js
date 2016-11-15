@@ -1,18 +1,18 @@
 'use strict';
 
-const hand = require('./hand');
-const shoe = require('./shoe');
-const dealer = require('./dealer');
+import Hand from './hand';
+import Shoe from './shoe';
+import Dealer from './dealer';
 
-module.exports = function (game) {
-  let judge = {};
+class Judge {
+  constructor(game) {
+    this.game = game;
+    this.shoe = new Shoe(game.cards);
+    this.dealer = new Dealer(this.shoe, new Hand(game.dealerCards));
+    this.clientHand = new Hand(game.clientCards);
+  }
 
-  judge.game = game;
-  judge.shoe = shoe(game.cards);
-  judge.dealer = dealer(judge.shoe, hand(game.dealerCards));
-  judge.clientHand = hand(game.clientCards);
-
-  judge.makeStep = function (step) {
+  makeStep(step) {
     switch (step) {
       case 'stand':
         this.dealer.makeStep();
@@ -21,9 +21,9 @@ module.exports = function (game) {
         this.clientHand.takeCard(this.shoe);
         break;
     }
-  };
+  }
 
-  judge.getOutcome = function (step) {
+  getOutcome(step) {
     let dealerPoints = this.dealer.hand.rateCards();
     let clientPoints = this.clientHand.rateCards();
     let outcome = null;
@@ -63,7 +63,7 @@ module.exports = function (game) {
     }
 
     return outcome;
-  };
+  }
+}
 
-  return judge;
-};
+export default Judge;

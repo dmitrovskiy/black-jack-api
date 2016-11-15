@@ -1,16 +1,16 @@
 'use strict';
 
-module.exports = function (shoe, hand) {
-  let dealer = {
-    shoe: shoe,
-    hand: hand
-  };
+class Dealer {
+  constructor(shoe, hand) {
+    this.shoe = shoe;
+    this.hand = hand;
+  }
 
-  dealer.makeStep = function () {
-    while(hand.rateCards() < 17) {
-      hand.takeCard(shoe);
+  makeStep() {
+    while (this.hand.rateCards() < 17) {
+      this.hand.takeCard(this.shoe);
     }
-  };
+  }
+}
 
-  return dealer;
-};
+export default Dealer;

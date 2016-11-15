@@ -1,15 +1,15 @@
 'use strict';
 
-const path = require('path');
-const compress = require('compression');
-const cors = require('cors');
-const feathers = require('feathers');
-const configuration = require('feathers-configuration');
-const hooks = require('feathers-hooks');
-const rest = require('feathers-rest');
-const bodyParser = require('body-parser');
-const middleware = require('./middleware');
-const services = require('./services');
+import path from 'path';
+import compress from 'compression';
+import cors from 'cors';
+import feathers from 'feathers';
+import configuration from 'feathers-configuration';
+import hooks from 'feathers-hooks';
+import rest from 'feathers-rest';
+import bodyParser from 'body-parser';
+import middleware from './middleware';
+import services from './services';
 
 const app = feathers();
 
