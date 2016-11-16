@@ -25,6 +25,7 @@
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
     "ava:unit": "ava -v ./test/unit/**/**/*.test.js",
+    "ava:integration": "NODE_ENV=test ava -v ./test/integration/**/**/*.test.js",
     "build": "babel src -d dist"
   },
   "ava": {
