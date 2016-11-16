@@ -1,6 +1,6 @@
 'use strict';
 
-import judgeHook from '../../../helpers/judge';
+import Judge from '../../../helpers/judge';
 import gameModel from '../../game/game-model';
 
 export default async function (hook) {
@@ -8,7 +8,7 @@ export default async function (hook) {
   gameModel.findOne(
     {_id: hook.data.gameId}
   ).exec().then(function (game) {
-    const judge = judgeHook(game);
+    const judge = new Judge(game);
     judge.makeStep(hook.data.type);
     const outcome = judge.getOutcome(hook.data.type);
 

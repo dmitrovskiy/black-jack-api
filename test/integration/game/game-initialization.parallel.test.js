@@ -8,34 +8,38 @@ import randomString from 'randomstring';
 import userModel from '../../../src/services/user/user-model';
 import gameModel from '../../../src/services/game/game-model';
 
-const userStub = {
-  email: `${randomString.generate(12)}@test.com`
+const user = {
+  email: `${randomString.generate(12)}@test.com`,
+  cash: 10
 };
 
-const gameStub = {};
+const game = {};
 
-test.before('prepare a user', async t => {
-  await userModel.remove();
+test.before('clean up a possible test user', async t => {
+  await userModel.remove({email: user.email});
+});
+
+test.before('create a test user', async t => {
   await userModel
-    .create({email: userStub.email})
+    .create(user)
     .then(res => {
-      userStub.id = res._id.toString();
+      user.id = res._id.toString();
     });
 });
 
-test.after('clean up a user', async t => {
-  await userModel.remove({email: userStub.email});
+test.after('clean up a test user', async t => {
+  await userModel.remove({email: user.email});
 });
 
-test.after('clean up a game', async t => {
-  await gameModel.remove({_id: gameStub.id});
+test.after('clean up a test game', async t => {
+  await gameModel.remove({_id: game.id});
 });
 
-test('game: should be initialized', async t => {
+test('should be initialized when created', async t => {
   await request
     .post('/games')
     .send({
-      userId: userStub.id,
+      userId: user.id,
       bet: 10
     })
     .expect(res => {
@@ -45,6 +49,6 @@ test('game: should be initialized', async t => {
     })
     .expect(201)
     .then(res => {
-      gameStub.id = res.body.id;
+      game.id = res.body.id;
     });
 });

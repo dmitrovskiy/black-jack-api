@@ -6,33 +6,37 @@ import {assert} from 'chai';
 import randomString from 'randomstring';
 import userModel from '../../../src/services/user/user-model';
 
-const userStub = {
-  email: `${randomString.generate(12)}@test.com`
+const user = {
+  email: `${randomString.generate(12)}@test.com`,
+  cash: 0
 };
 
-test.before('prepare a user', async t => {
-  await userModel.remove({email: userStub.email});
-  await userModel.create({email: userStub.email, cash: 0})
+test.before('clean up a possible test user', async t => {
+  await userModel.remove({email: user.email});
+});
+
+test.before('create a test user', async t => {
+  await userModel.create(user)
     .then(res => {
-      userStub.id = res._id.toString();
+      user.id = res._id.toString();
     });
 });
 
-test.after('clean up a user up', async t => {
-  await userModel.remove({email: userStub.email});
+test.after('clean up a test user', async t => {
+  await userModel.remove({email: user.email});
 });
 
-test('payment: charge a user\'s cash', async t => {
+test('should charge a user\'s cash', async t => {
   await request
     .post('/payments')
     .send({
-      userId: userStub.id,
+      userId: user.id,
       amount: 10
     })
     .expect(201);
 
   await userModel
-    .findOne({_id: userStub.id})
+    .findOne({_id: user.id})
     .then(res => {
       assert(res.cash, 10);
     });
