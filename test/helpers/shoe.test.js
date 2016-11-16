@@ -1,20 +1,19 @@
 'use strict';
 
-import {assert} from 'chai';
+import test from 'ava';
 import Shoe from '../../src/helpers/shoe';
+import {assert} from 'chai';
 
-describe('helpers.shoe', function () {
-  describe('#getNextCard', function () {
-    beforeEach('setup shoe cards', function () {
-      this.shoe = new Shoe([{sign: 0, type: 0}]);
-    });
-    it('should get random card from cards', function () {
-      let card = this.shoe.getNextCard();
-      assert.isObject(card);
-    });
-    it('should pull from cards', function () {
-      this.shoe.getNextCard();
-      assert.equal(0, this.shoe.cards.length);
-    });
-  });
+test.beforeEach(t => {
+  t.context.shoe = new Shoe([{sign: 0, type: 0}]);
+});
+
+test('#getNextCard: should pull from cards', t => {
+  t.context.shoe.getNextCard();
+  assert.equal(0, t.context.shoe.cards.length);
+});
+
+test('#getNextCard: should get random card from cards', t => {
+  let card = t.context.shoe.getNextCard();
+  assert.isObject(card);
 });

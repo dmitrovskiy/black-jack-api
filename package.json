@@ -25,13 +25,14 @@
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
     "mocha": "mocha --require babel-polyfill --compilers js:babel-register test --recursive",
-    "ava": "ava --verbose",
+    "ava": "ava -v",
     "build": "babel src -d dist"
   },
   "ava": {
-    "files": ["test/*test.js"],
+    "files": ["./test/**/*.test.js"],
     "babel": "inherit",
     "require": [
+      "babel-polyfill",
       "babel-register"
     ]
   },

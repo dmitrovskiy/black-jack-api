@@ -3,6 +3,7 @@
 import {assert} from 'chai';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
+import test from 'ava';
 
 let userModelStub = {};
 const updateUserAmount = proxyquire(
@@ -12,24 +13,19 @@ const updateUserAmount = proxyquire(
   }
 );
 
-describe('services.payment.hooks.update-user-amount', function () {
-  beforeEach('create hook stub', function () {
-    this.hook = {
-      data: {
-        userId: 123,
-        amount: 10
-      }
-    };
-  });
-
-
-  it('should update a user', function () {
-    let execSpy = sinon.spy();
-    userModelStub.update = sinon.stub().returns({exec: execSpy});
-
-    updateUserAmount(this.hook);
-    assert.isTrue(execSpy.calledOnce);
-  });
-
+test.beforeEach(t => {
+  t.context.hook = {
+    data: {
+      userId: 123,
+      amount: 10
+    }
+  };
 });
 
+test('should update a user', t => {
+  let execSpy = sinon.spy();
+  userModelStub.update = sinon.stub().returns({exec: execSpy});
+
+  updateUserAmount(t.context.hook);
+  assert.isTrue(execSpy.calledOnce);
+});

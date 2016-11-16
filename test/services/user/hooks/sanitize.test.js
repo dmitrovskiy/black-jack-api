@@ -2,20 +2,19 @@
 
 import {assert} from 'chai';
 import userSanitize from '../../../../src/services/user/hooks/sanitize';
+import test from 'ava';
 
-describe('services.user.hooks.sanitize', function (){
-  beforeEach('create hook stub', function () {
-    this.hook = {
-      data: {
-        cash: 10
-      }
-    };
-  });
+test.beforeEach(t => {
+  t.context.hook = {
+    data: {
+      cash: 10
+    }
+  };
+});
 
-  it('should sanitize cash field', function () {
-    return userSanitize(this.hook)
-      .then(function(hook) {
-        assert.isUndefined(hook.data.cash);
-      });
-  });
+test('should sanitize cash field', async t => {
+  await userSanitize(t.context.hook)
+    .then(hook => {
+      assert.isUndefined(hook.data.cash);
+    });
 });
