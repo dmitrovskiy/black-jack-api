@@ -25,7 +25,15 @@
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
     "mocha": "mocha --require babel-polyfill --compilers js:babel-register test --recursive",
+    "ava": "ava --verbose",
     "build": "babel src -d dist"
+  },
+  "ava": {
+    "files": ["test/*test.js"],
+    "babel": "inherit",
+    "require": [
+      "babel-register"
+    ]
   },
   "dependencies": {
     "bluebird": "^3.4.6",
@@ -45,7 +53,7 @@
     "winston": "2.3.0"
   },
   "devDependencies": {
-    "ava": "^0.15.0",
+    "ava": "^0.15.2",
     "babel-cli": "^6.18.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-polyfill": "^6.16.0",
