@@ -25,7 +25,8 @@
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
     "ava:unit": "ava -v ./test/unit/**/**/*.test.js",
-    "ava:integration": "NODE_ENV=test ava -v ./test/integration/**/**/*.test.js",
+    "ava:integration:parallel": "NODE_ENV=test ava -v ./test/integration/**/**/*.parallel.test.js",
+    "ava:integration:serial": "NODE_ENV=test ava -s -v ./test/integration/**/**/*.serial.test.js",
     "build": "babel src -d dist"
   },
   "ava": {
@@ -33,7 +34,8 @@
     "require": [
       "babel-polyfill",
       "babel-register"
-    ]
+    ],
+    "concurrency": 5
   },
   "dependencies": {
     "bluebird": "^3.4.6",
@@ -49,6 +51,7 @@
     "lodash": "4.16.6",
     "mongoose": "4.6.5",
     "mongoose-hidden": "0.6.4",
+    "randomstring": "^1.1.5",
     "serve-favicon": "2.3.0",
     "winston": "2.3.0"
   },
@@ -64,6 +67,8 @@
     "jshint": "2.9.4",
     "nodemon": "^1.11.0",
     "proxyquire": "1.7.10",
-    "sinon": "1.17.6"
+    "sinon": "1.17.6",
+    "supertest": "^2.0.1",
+    "supertest-promised": "^1.0.0"
   }
 }

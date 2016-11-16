@@ -5,7 +5,7 @@ import Shoe from '../../../helpers/shoe';
 import defaultCards from '../../../../default-data/cards';
 
 export default async function (hook) {
-  const cards = defaultCards.slide();
+  const cards = defaultCards.slice();
   const shoe = new Shoe(cards);
 
   hook.data.dealerCards = [
