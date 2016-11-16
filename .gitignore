@@ -35,3 +35,7 @@ data/
 
 # Babel
 dist
+
+# Nyc coverage
+coverage
+.nyc_output

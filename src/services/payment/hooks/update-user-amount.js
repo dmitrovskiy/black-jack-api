@@ -3,7 +3,7 @@
 import userModel from '../../user/user-model';
 
 export default async function(hook) {
-  userModel.update(
+  await userModel.update(
     {
       _id: hook.data.userId
     },

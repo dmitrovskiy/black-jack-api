@@ -24,10 +24,10 @@
     "jshint": "jshint src test --config",
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
-    "ava:unit": "ava -v ./test/unit/**/**/*.test.js",
+    "ava:unit": "nyc ava -v ./test/unit/**/**/*.test.js",
     "ava:integration:parallel": "NODE_ENV=test ava -v ./test/integration/**/**/*.parallel.test.js",
     "ava:integration:serial": "NODE_ENV=test ava -s -v ./test/integration/**/**/*.serial.test.js",
-    "build": "babel src -d dist"
+    "build": "BABEL_ENV=production babel src -d dist"
   },
   "ava": {
     "babel": "inherit",
@@ -66,6 +66,7 @@
     "chai": "3.5.0",
     "jshint": "2.9.4",
     "nodemon": "^1.11.0",
+    "nyc": "^9.0.1",
     "proxyquire": "1.7.10",
     "sinon": "1.17.6",
     "supertest": "^2.0.1",
