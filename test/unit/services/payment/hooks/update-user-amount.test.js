@@ -7,7 +7,7 @@ import test from 'ava';
 
 let userModelStub = {};
 const updateUserAmount = proxyquire(
-  '../../../../src/services/payment/hooks/update-user-amount',
+  '../../../../../src/services/payment/hooks/update-user-amount',
   {
     '../../user/user-model': userModelStub
   }

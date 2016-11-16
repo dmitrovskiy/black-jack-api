@@ -1,7 +1,7 @@
 'use strict';
 
 import test from 'ava';
-import Shoe from '../../src/helpers/shoe';
+import Shoe from '../../../src/helpers/shoe';
 import {assert} from 'chai';
 
 test.beforeEach(t => {

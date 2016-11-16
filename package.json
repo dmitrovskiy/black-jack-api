@@ -24,11 +24,10 @@
     "jshint": "jshint src test --config",
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
-    "ava": "ava -v",
+    "ava:unit": "ava -v ./test/unit/**/**/*.test.js",
     "build": "babel src -d dist"
   },
   "ava": {
-    "files": ["./test/**/*.test.js"],
     "babel": "inherit",
     "require": [
       "babel-polyfill",

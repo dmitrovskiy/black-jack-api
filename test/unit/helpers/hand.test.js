@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import _ from 'lodash';
-import Hand from '../../src/helpers/hand';
+import Hand from '../../../src/helpers/hand';
 import sinon from 'sinon';
 import cardCases from './cardCases';
 import {assert} from 'chai';

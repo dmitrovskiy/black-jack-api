@@ -18,7 +18,7 @@ let shoeStub = function () {
 };
 
 const Judge = proxyquire(
-  '../../src/helpers/judge',
+  '../../../src/helpers/judge',
   {
     '../dealer': dealerStub,
     '../hand': handStub,

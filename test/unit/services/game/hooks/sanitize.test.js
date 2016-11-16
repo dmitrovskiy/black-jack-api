@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import {assert} from 'chai';
-import gameSanitize from '../../../../src/services/game/hooks/sanitize';
+import gameSanitize from '../../../../../src/services/game/hooks/sanitize';
 
 test.beforeEach(t => {
   t.context.hook = {

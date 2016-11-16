@@ -2,7 +2,7 @@
 
 import test from 'ava';
 import sinon from 'sinon';
-import Dealer from '../../src/helpers/dealer';
+import Dealer from '../../../src/helpers/dealer';
 import {assert} from 'chai';
 
 test('#makeStep: should rate cards 1 time', t => {
