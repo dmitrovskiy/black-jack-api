@@ -20,11 +20,10 @@
     "node": ">= 6.9.1"
   },
   "scripts": {
-    "test": "npm run jshint && npm run mocha",
+    "test": "npm run jshint && npm run ava",
     "jshint": "jshint src test --config",
     "start": "node dist/",
     "start:dev": "DEBUG=app* babel-node src/",
-    "mocha": "mocha --require babel-polyfill --compilers js:babel-register test --recursive",
     "ava": "ava -v",
     "build": "babel src -d dist"
   },
