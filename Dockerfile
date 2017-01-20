@@ -6,6 +6,8 @@ WORKDIR /var/www/html
 
 COPY . /var/www/html
 
-RUN npm install
+RUN npm install \
+    && npm run build
+
 
 CMD ["npm", "start"]
